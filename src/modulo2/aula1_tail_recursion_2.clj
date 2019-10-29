@@ -24,3 +24,16 @@
         (recur func (rest inner-sequence))))))
 
 (my-map println (range 10000))
+
+
+(defn my-map
+  [func inner-sequence]
+  (let [frst (first inner-sequence)]
+    (if (not (nil? frst))
+      (do
+        (func frst)
+        (recur func (rest inner-sequence))
+        (println "out" frst)                          ; Syntax error (UnsupportedOperationException) - Can only recur from tail position
+        ))))
+
+(my-map println (range 10000))
